@@ -1,0 +1,1 @@
+alert("MEU DEUS ALGUEM AJUDA EU")
