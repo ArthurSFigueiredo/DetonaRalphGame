@@ -2,6 +2,10 @@ h2{
     margin-top: 1rem;
 }
 
+body{
+    cursor:url('../images/bastao.png'), auto;
+}
+
 .container{
     display: flex;
     flex-direction: column;

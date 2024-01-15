@@ -7,15 +7,14 @@ const state = {
         lives: document.querySelector("#lives")
     },
     values: {
-        gameVelocity: 1000,
         hitPosition: 0,
         result: 0,
         currentTime: 60,
-        hp: 3,
+        hp: 1,
     },
 
     actions: {
-        timerId: setInterval(randomSquare, gameVelocity),
+        timerId: setInterval(randomSquare, 500),
         countDownTimerId: setInterval(countDown, 1000),
     }
 };
@@ -24,11 +23,26 @@ function countDown() {
     state.values.currentTime--;
     state.view.timeLeft.textContent = state.values.currentTime;
 
-    if (state.values.currentTime <= 0) {
-        clearInterval(state.actions.countDownTimerId)
-        clearInterval(state.actions.timerId)
-        alert("GAME OVER! O seu resultado foi: " + state.values.result);
+    if (state.values.currentTime <= 0 || state.values.hp <= 0) {
+        gameOver();
     }
+}
+
+function livesDown() {
+    state.values.hp--
+    state.view.lives.textContent = "x" + state.values.hp;
+    if (state.values.hp <= 0) {
+        gameOver();
+    }
+}
+    
+
+
+function gameOver(){
+    alert("GAME OVER! O seu resultado foi: " + state.values.result + " pontos");
+    clearInterval(state.actions.countDownTimerId);
+    clearInterval(state.actions.timerId);
+    setTimeout(resetGame,1000);
 }
 
 function playSound() {
@@ -63,24 +77,31 @@ function addListenerHitBox() {
     })
 }
 
-function livesDown() {
-    state.values.hp--
+function resetGame() {
+    clearInterval(state.actions.timerId);
+    clearInterval(state.actions.countDownTimerId);
+    
+    state.values.result = 0;
+    state.values.currentTime = 60;
+    state.values.hp = 3;
+
+    state.view.timeLeft.textContent = state.values.currentTime;
+    state.view.score.textContent = state.values.result;
     state.view.lives.textContent = "x" + state.values.hp;
 
+    addListenerHitBox();
+
+}
+
+function initialize() {
+    addListenerHitBox()
     state.view.squares.forEach((square) => {
         square.addEventListener("mousedown", () => {
             if (square.id !== state.values.hitPosition) {
                 state.values.hitPosition = null
             }
-            if (state.values.hp <= 0) {
-                alert("GAME OVER! O seu resultado foi: " + state.values.result);
-            }
+            
         })
     })
 }
-
-function initialize() {
-    addListenerHitBox()
-}
-
 initialize()
