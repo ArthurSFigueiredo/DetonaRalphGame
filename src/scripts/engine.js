@@ -10,7 +10,7 @@ const state = {
         hitPosition: 0,
         result: 0,
         currentTime: 60,
-        hp: 1,
+        hp: 3,
     },
 
     actions: {
