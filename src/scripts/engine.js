@@ -12,7 +12,7 @@ function initializeState() {
         values: {
             hitPosition: 0,
             result: 0,
-            currentTime: 10,
+            currentTime: 60,
             hp: 3,
         },
 
