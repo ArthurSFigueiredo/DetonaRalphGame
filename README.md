@@ -10,5 +10,3 @@ Bem-vindo ao JSGame Detona Ralph! Neste repositório, você encontrará um jogo 
 
 Créditos
 Este jogo foi desenvolvido como parte de um projeto educacional.
-
-Divirta-se jogando o JSGame Detona Ralph enquanto explora as técnicas modernas de desenvolvimento de jogos em JavaScript. Lembre-se de conferir o repositório original aqui e deixar uma ⭐️ se você gostou do projeto!
